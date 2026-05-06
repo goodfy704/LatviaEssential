@@ -1,0 +1,26 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Listing {
+  id          String   @id @default(uuid())
+  category    String
+  source      String
+  title       String
+  company     String?
+  location    String?
+  url         String   @unique
+  fingerprint String   @unique
+  metadata    Json     @default("{}")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([source])
+  @@index([category])
+  @@index([createdAt])
+}

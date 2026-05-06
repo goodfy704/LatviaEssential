@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment
+.env
+.env.local
+.env.production
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Prisma
+prisma/migrations/
+!prisma/migrations/.gitkeep
+
+# Docker
+.docker/data/
+
+# Playwright
+.playwright/
+playwright-report/
+test-results/
+
+# Coverage
+coverage/
+
+# Temp
+tmp/
+temp/
