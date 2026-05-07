@@ -15,6 +15,7 @@ export interface AppConfig {
     botToken: string;
     clientId: string;
     guildId: string;
+    channelId: string;
   };
   openrouter: {
     apiKey: string;
@@ -43,6 +44,7 @@ export default function configuration(): AppConfig {
       botToken: process.env.DISCORD_BOT_TOKEN ?? '',
       clientId: process.env.DISCORD_CLIENT_ID ?? '',
       guildId: process.env.DISCORD_GUILD_ID ?? '',
+      channelId: process.env.DISCORD_CHANNEL_ID ?? '',
     },
     openrouter: {
       apiKey: process.env.OPENROUTER_API_KEY ?? '',
@@ -68,6 +70,7 @@ export const configValidationSchema = Joi.object({
   DISCORD_BOT_TOKEN: Joi.string().optional().allow(''),
   DISCORD_CLIENT_ID: Joi.string().optional().allow(''),
   DISCORD_GUILD_ID: Joi.string().optional().allow(''),
+  DISCORD_CHANNEL_ID: Joi.string().optional().allow(''),
   OPENROUTER_API_KEY: Joi.string().optional().allow(''),
   OPENROUTER_MODEL: Joi.string().default('openai/gpt-4o-mini'),
   SCRAPER_USER_AGENT: Joi.string().optional(),

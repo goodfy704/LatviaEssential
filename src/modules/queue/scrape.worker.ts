@@ -22,7 +22,7 @@ export class ScrapeWorker extends WorkerHost {
 
     for (const listing of newListings) {
       await this.queueService.addNotificationJob({
-        listingId: listing.url,
+        listingUrl: listing.url,
         channel: 'discord',
       });
     }
