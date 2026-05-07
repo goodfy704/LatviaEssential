@@ -18,7 +18,7 @@ export class QueueService {
     });
   }
 
-  async addNotificationJob(data: { listingId: string; channel: string }): Promise<void> {
+  async addNotificationJob(data: { listingUrl: string; channel: string }): Promise<void> {
     await this.notificationQueue.add('notify', data, {
       attempts: 3,
       backoff: { type: 'exponential', delay: 5000 },
