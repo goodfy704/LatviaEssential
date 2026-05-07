@@ -7,6 +7,7 @@ import { QueueModule } from '@modules/queue/queue.module';
 import { ListingsModule } from '@modules/listings/listings.module';
 import { ScraperModule } from '@modules/scraper/scraper.module';
 import { DiscordModule } from '@modules/discord/discord.module';
+import { SchedulerModule } from '@modules/scheduler/scheduler.module';
 import { NotificationsModule } from '@modules/notifications/notifications.module';
 import { OpenrouterModule } from '@modules/openrouter/openrouter.module';
 
@@ -31,6 +32,7 @@ import { OpenrouterModule } from '@modules/openrouter/openrouter.module';
     ListingsModule,
     ScraperModule,
     DiscordModule,
+    SchedulerModule,
     NotificationsModule,
     OpenrouterModule,
   ],
