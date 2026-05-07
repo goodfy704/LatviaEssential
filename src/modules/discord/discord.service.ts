@@ -4,14 +4,15 @@ import { Client, GatewayIntentBits, TextChannel, EmbedBuilder } from 'discord.js
 @Injectable()
 export class DiscordService implements OnModuleInit, OnModuleDestroy {
   private client: Client;
-  private ready = false;
 
   async onModuleInit(): Promise<void> {
-    this.client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages] });
-    this.client.on('ready', () => {
-      this.ready = true;
+    const token = process.env.DISCORD_BOT_TOKEN;
+    if (!token) return;
+
+    this.client = new Client({
+      intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
     });
-    await this.client.login(process.env.DISCORD_BOT_TOKEN);
+    await this.client.login(token);
   }
 
   async onModuleDestroy(): Promise<void> {
@@ -25,10 +26,10 @@ export class DiscordService implements OnModuleInit, OnModuleDestroy {
     url: string;
   }): Promise<void> {
     const channelId = process.env.DISCORD_CHANNEL_ID;
-    if (!channelId) return;
+    if (!channelId || !this.client) return;
 
     const embed = new EmbedBuilder()
-      .setTitle('🚀 New Job Found')
+      .setTitle('New Job Found')
       .setColor(0x00ae86)
       .addFields(
         { name: 'Title', value: job.title, inline: false },
