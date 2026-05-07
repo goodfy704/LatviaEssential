@@ -1,4 +1,8 @@
 import { Module } from '@nestjs/common';
+import { OpenrouterService } from './openrouter.service';
 
-@Module({})
+@Module({
+  providers: [OpenrouterService],
+  exports: [OpenrouterService],
+})
 export class OpenrouterModule {}
